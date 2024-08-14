@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                         <?php }?>
-                    <a href="<?= base_url('Admin/pinjam') ?>" class="nav-item nav-link"><i class="fa fa-book"></i>Peminjaman</a>
+                    <a href="<?= base_url('Admin/pinjam') ?>" class="nav-item nav-link"><i class="fa fa-book"></i>Pending</a>
                 </div>
             </nav>
         </div>

@@ -35,4 +35,26 @@ class Pinjam extends CI_Controller {
 		$this->load->view('layout/js');
         $this->load->view('admin/peminjaman',$data);
 	}
+	public function simpan($id_user){
+		$this->db->from('peminjaman')->where('id_user',$id_user);
+		$borrow = $this->db->get()->row();
+
+		$tgl_dipinjam = $this->input->post('tgl_dipinjam');
+		$lama_meminjam = (int)$this->input->post('lama_meminjam');
+		$date = new DateTime($tgl_dipinjam);
+		$date->modify("+$lama_meminjam days");
+		$tgl_dikembalikan = $date->format('Y-m-d');
+
+		$data = array(
+			'id_user'	=> $id_user,
+			'id_buku'	=> $this->input->post('id_buku'),
+			'tgl_dipinjam'		=> $this->input->post('tgl_dipinjam'),
+			'tgl_dikembalikan'	=> $tgl_dikembalikan,
+			'lama_meminjam'		=> $this->input->post('lama_meminjam'),
+			'status'			=> $this->input->post('status'),
+		);
+
+		var_dump($data);
+		die;
+	}
 }

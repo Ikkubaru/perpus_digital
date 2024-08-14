@@ -188,4 +188,30 @@ class User extends CI_Controller {
         $this->db->delete('user',$where);
         redirect('Admin/user/petugas');
     }
+    public function tambahAdmin(){
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('layout/navbar');
+		$this->load->view('admin/tambahAdmin');
+        $this->load->view('layout/js');
+    }
+    public function adminSimpan(){
+        $data = array(
+            'username'      => $this->input->post('username'),
+            'password'      => md5($this->input->post('password')),
+            'email'         => $this->input->post('email'),
+            'nama_lengkap'  => $this->input->post('nama_lengkap'),
+            'alamat'        => $this->input->post('alamat'),
+            'no_hp'         => $this->input->post('no_hp'),
+            'level'         => $this->input->post('level'),
+        );
+        $this->db->insert('user',$data);
+        redirect('Admin/user/admin');
+    }
+    public function deleteAdmin(){
+        
+    }
+    public function editAdmin(){
+
+    }
 }

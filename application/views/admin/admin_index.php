@@ -5,6 +5,7 @@
                     </div>
 					<h1 class="mb-0">Kelola Admint </h1>
                 </div>
+                <a href="<?= base_url('Admin/user/tambahAdmin') ?>"><button class="btn btn-info">Tambah Admin</button></a>
                 <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -19,6 +20,7 @@
                                     <th scope="col">Nama Lengkap</th>
                                     <th scope="col">Alamat</th>
                                     <th scope="col">No Telepon</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +34,10 @@
                                 <td><?= $admin['nama_lengkap'] ?></td>
                                 <td><?= $admin['alamat'] ?></td>
                                 <td><?= $admin['no_hp'] ?></td>
+                                <td>
+                                    <a href="<?= base_url('Admin/user/deleteAdmin/'.$admin['id_user']) ?>"><button class="btn btn-danger">Delete</button></a>
+                                    <a href="<?= base_url('Admin/user/editAdmin/'.$admin['id_user']) ?>"><button class="btn btn-warning">Edit</button></a>
+                                </td>
                             </tr>
                             <?php } ?>
                             </tbody>

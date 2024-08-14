@@ -26,7 +26,8 @@ class Home extends CI_Controller {
         $data = array(
             'id_user'   => $id_user,
             'id_buku'   => $id_buku = $this->input->post('id_buku'),
-            'tgl_dipinjam'   => $this->input->post('tgl_dipinjam'),
+            'tgl_dipinjam'    => $this->input->post('tgl_dipinjam'),
+            'lama_meminjam'   => $this->input->post('lama_meminjam'),
         );
         $this->db->insert('peminjaman',$data);
         $this->db->from('buku')->where('id_buku',$id_buku);
