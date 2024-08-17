@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <a href="#" class="position-relative me-4 my-auto">
+                            <a href="<?= base_url('home/book') ?>" class="position-relative me-4 my-auto">
                                 <i class="fa fa-book fa-2x"></i>
                             </a>
                             <?php if($this->session->userdata('id_user') == NULL){ ?>

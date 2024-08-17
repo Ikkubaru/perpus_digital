@@ -11,7 +11,7 @@ class Home extends CI_Controller {
         $categories = $this->db->get()->result_array();
         $this->db->from('peminjaman');
         $pinjam = $this->db->get()->result_array();
-        
+
         $data = array(
             'id_buku'       => 'id_buku',
             'judul'         => 'judul',
@@ -44,6 +44,22 @@ class Home extends CI_Controller {
         }else{
             return false;
         }
+    }
+    public function book(){
+        if($this->session->userdata('id_user')==NULL){
+			redirect('Auth');
+		}
+        $id_user = $this->session->userdata('id_user');
+        $this->db->from('peminjaman')->where('id_user',$id_user);
+        $this->db->join('buku','buku.id_buku=peminjaman.id_buku');
+        $book = $this->db->get()->result_array();
+
+        $data = array(
+            'judul'     => 'judul',
+            'cover'     => 'cover',
+            'book'      => $book
+        );
+        $this->load->view('koleksi',$data);
     }
 	public function logout(){
 		$this->session->sess_destroy();
