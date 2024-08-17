@@ -25,6 +25,8 @@
                             </div>
                         <?php }?>
                     <a href="<?= base_url('Admin/pinjam') ?>" class="nav-item nav-link"><i class="fa fa-book"></i>Pending</a>
+                    <a href="<?= base_url('Admin/pinjam/ongoing') ?>" class="nav-item nav-link"><i class="fa fa-book"></i>OnGoing</a>
+                    <a href="<?= base_url('Admin/pinjam/canceled') ?>" class="nav-item nav-link"><i class="fa fa-"></i>Canceled</a>
                 </div>
             </nav>
         </div>

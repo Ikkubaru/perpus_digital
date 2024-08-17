@@ -9,6 +9,9 @@ class Home extends CI_Controller {
         $book = $this->db->get()->result_array();
         $this->db->from('kategori');
         $categories = $this->db->get()->result_array();
+        $this->db->from('peminjaman');
+        $pinjam = $this->db->get()->result_array();
+        
         $data = array(
             'id_buku'       => 'id_buku',
             'judul'         => 'judul',
