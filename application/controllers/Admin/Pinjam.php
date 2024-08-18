@@ -74,10 +74,38 @@ class Pinjam extends CI_Controller {
 		$this->load->view('layout/js');
         $this->load->view('admin/ongoing',$data);
 	}
-	public function returnBook(){
-		
+	public function returnBook($id_buku){
+		$data = array(	
+			'tgl_dikembalikan'	=> $this->input->post('tgl_dikembalikan'),
+		);
+		$where = array('id_buku'	=> $id_buku);
+		// $this->db->update($data, $where);
+		redirect('Admin/pinjam/ongoing');
 	}
 	public function canceled(){
-
+		$this->db->from('peminjaman')->where('status','disetujui');
+		$this->db->join('buku','peminjaman.id_buku = buku.id_buku');
+		$this->db->join('user','peminjaman.id_user = user.id_user');
+		$cancel = $this->db->get()->result_array();
+		$data= array(
+			'id_buku'				=> 'id_buku',
+			'judul'					=> 'judul',
+			'cover'					=> 'cover',
+			'id_user'			=> 'id_user',
+			'username'			=> 'username',
+			'email'				=> 'email',
+			'nama_lengkap'		=> 'nama_lengkap',
+			'alamat'			=> 'alamat',
+			'no_hp'				=> 'no_hp',
+			'tgl_dipinjam'			=> 'tgl_dipinjam',
+			'status'				=> 'status',
+			'cancel' 	=> $cancel
+		);
+		
+		$this->load->view('layout/header');
+		$this->load->view('layout/navbar');
+		$this->load->view('layout/sidebar');
+		$this->load->view('layout/js');
+        $this->load->view('admin/canceled',$data);
 	}
 }
