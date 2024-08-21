@@ -28,7 +28,7 @@
                                         <center>
                                             <img src="<?= base_url('assets/cover/'.$pinjam['cover']) ?>" width="200px" height="300px"> <br>
                                             <br>
-                                        <button type="submit" value="" name="" class="btn btn-info">Return</button>
+                                        <button type="submit" value="selesai" name="status" class="btn btn-info">Return</button>
                                         </center>
                                     </form>
                                 </div>

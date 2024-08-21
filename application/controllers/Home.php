@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 			redirect('Auth');
 		}
         $id_user = $this->session->userdata('id_user');
-        $this->db->from('peminjaman')->where('id_user',$id_user);
+        $this->db->from('peminjaman')->where('id_user',$id_user)->where('status','disetujui');
         $this->db->join('buku','buku.id_buku=peminjaman.id_buku');
         $book = $this->db->get()->result_array();
 
