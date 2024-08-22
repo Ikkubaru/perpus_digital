@@ -5,7 +5,7 @@
                     </div>
 					<h1 class="mb-0">History Peminjaman Buku</h1>
                 </div>
-                <a href="<?= base_url('Admin/laporan') ?>" class="btn btn-info">Cetak Laporan</a>
+                <!-- <a href="<?= base_url('Admin/laporan') ?>" class="btn btn-info">Cetak Laporan</a> -->
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
 
