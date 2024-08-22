@@ -1,42 +1,47 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Dompdf\Dompdf;
 
 class Laporan extends CI_Controller {
-    public function index() {
+
+    public function __construct() {
+        parent::__construct();
+    }
+    public function Lpeminjaman() {
         $this->db->from('peminjaman');
-        $peminjaman = $this->db->get()->result_array();
+        $this->db->join('buku','buku.id_buku=peminjaman.id_buku');
+        $this->db->join('user','user.id_user=peminjaman.id_user');
+        $peminjaman =$this->db->get()->result_array();
+        $data = array(
+        'judul'         => 'judul',
+        'nama_lengkap'  => 'nama_lengkap',
+        'email'         => 'email',
+        'alamat'        =>  'alamat',
+        'no_hp'         => 'no_hp',
+        'tgl_dipinjam'  =>  'tgl_dipinjam',
+        'tgl_dikembalikan'  =>  'tgl_dikembalikan',
+        'peminjaman'    => $peminjaman
+        );
+        $html = $this->load->view('admin/laporan_pdf', $data, true);
 
-        // Membuat objek spreadsheet baru
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
+        // Inisialisasi Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
 
-        // Set header kolom
-        $sheet->setCellValue('A1', 'No');
-        $sheet->setCellValue('B1', 'Judul Buku');
-        $sheet->setCellValue('C1', 'Nama Peminjam');
+        // (Optional) Setup ukuran dan orientasi kertas
+        $dompdf->setPaper('A4', 'landscape');
 
-        // Mengisi data ke dalam Excel
-        $row = 2;
-        $no =1;
-        foreach ($peminjaman as $pinjam) {
-            $sheet->setCellValue('A' . $row, $no++);
-            $sheet->setCellValue('B' . $row, $pinjam->id_user);
-            $sheet->setCellValue('C' . $row, $pinjam->id_buku);
-            $row++;
-        }
+        // Render PDF
+        $dompdf->render();
 
-        // Membuat file Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'Laporan_Peminjaman.xlsx';
+        // Output PDF ke browser
+        $dompdf->stream("laporan_peminjaman.pdf", array("Attachment" => 0));
+    }
+    public function Lbuku(){
 
-        // Mengirim output ke browser
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-        $writer->save('php://output');
-        exit();
+    }
+    public function Luser(){
+        
     }
 }

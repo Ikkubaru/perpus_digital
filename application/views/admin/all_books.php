@@ -8,6 +8,7 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Tambah Buku
             </button>
+            <a href="<?= base_url('admin/laporan/Lbuku') ?>" class="btn btn-warning">Cetak Laporan Buku (PDF)</a>
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">{component name}</h6>

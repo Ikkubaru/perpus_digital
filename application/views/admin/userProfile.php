@@ -1,6 +1,7 @@
          <!--  Start -->
          <div class="container-fluid pt-4 px-4">
              <h1 class="mb-0">Profile</h1>
+             <a href="<?= base_url('admin/laporan/Luser') ?>" class="btn btn-info">Print All User (PDF)</a>
                 <div class="bg-light rounded h-100 p-4">
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Username</label>
