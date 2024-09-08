@@ -49,12 +49,12 @@
                     </button>
                     <?php if($this->session->userdata('id_user') == NULL){ ?>
                     <a class="navbar-brand"><h1 class="text-primary display-6">Ikubaru Library</h1></a>
-                    <a href="" class="navbar-toggler py-2 px-3">
+                    <a href="<?= base_url("auth/login") ?>" class="navbar-toggler py-2 px-3">
                         <span class="fa fa-user text-primary"></span>
                     </a>
                     <?php } else{?>
                     <a class="navbar-brand"><h1 class="text-primary display-6">Ikubaru Library</h1></a>
-                    <a href="" class="navbar-toggler py-2 px-3">
+                    <a href="<?= base_url("auth/logout") ?>" class="navbar-toggler py-2 px-3">
                         <span class="fa fa-arrow-left text-primary"></span>
                     </a>
                         <?php }?>

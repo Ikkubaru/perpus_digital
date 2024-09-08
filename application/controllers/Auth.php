@@ -13,7 +13,6 @@ class Auth extends CI_Controller {
 	public function login(){
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
-		// $password = $this->input->post('password');
 		$this->db->from('user')->where('username',$username);
 		$query = $this->db->get()->row();
 		if($query == NULL){
